@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import HomePage from './pages/Home';
+import AddPage from './pages/Add';
+import EditPage from './pages/Edit';
+import { Route, Switch } from 'react-router-dom';
+
+
+const Container = styled.div`
+  text-align: center;
+`
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container>
+        <Switch>
+          <Route path="/add" >
+            <AddPage />
+          </Route>
+          <Route path="/edit/:id" >
+            <EditPage />
+          </Route>
+          <Route path="/" >
+            <HomePage />
+          </Route>
+        </Switch>
+      </Container>
+
     </div>
   );
 }
